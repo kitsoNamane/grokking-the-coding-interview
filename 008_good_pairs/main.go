@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func numGoodPairs(nums []int) int {
+func numGoodPairsNaive(nums []int) int {
 	pairCount := 0
 
 	for i := range nums {
@@ -14,6 +14,19 @@ func numGoodPairs(nums []int) int {
 	}
 
 	return pairCount
+}
+
+func numGoodPairs(nums []int) int {
+	paircount := 0
+
+	pairs := make(map[int]int)
+
+	for _, num := range nums {
+		pairs[num]++
+		paircount += pairs[num] - 1
+	}
+
+	return paircount
 }
 
 func main() {

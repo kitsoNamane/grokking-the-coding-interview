@@ -9,8 +9,6 @@ func isPalindrome(s string) bool {
 	sLower := []rune(strings.ToLower(s))
 	first, last := 0, len(sLower)-1
 
-	fmt.Println(sLower)
-
 	for first < last {
 
 		for first < last && !isAlphaNumeric(sLower[first]) {

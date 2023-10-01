@@ -13,9 +13,7 @@ func shortestDistance(words []string, wordOne, wordTwo string) int {
 	for i := range words {
 		if words[i] == wordOne {
 			firstPivotIndex = i
-		}
-
-		if words[i] == wordTwo {
+		} else if words[i] == wordTwo {
 			secondPivotIndex = i
 		}
 

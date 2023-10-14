@@ -2,22 +2,33 @@ package main
 
 import (
 	"fmt"
-	"slices"
 )
 
 func makeSquares(arr []int) []int {
 	n := len(arr)
+	squares := make([]int, n, n)
+	highestSquareIdx := len(squares)
+	left := 0
+	right := len(squares) - 1
 
-	for i := 0; i < n; i++ {
-		if arr[i] < 0 {
-			arr[i] = -1 * arr[i]
+	for left <= right {
+		leftSquare := arr[left] * arr[left]
+		rightSquare := arr[right] * arr[right]
+
+		if highestSquareIdx > 0 {
+			highestSquareIdx--
 		}
-		arr[i] = arr[i] * arr[i]
+
+		if leftSquare > rightSquare {
+			squares[highestSquareIdx] = leftSquare
+			left++
+		} else {
+			squares[highestSquareIdx] = rightSquare
+			right--
+		}
 	}
 
-	slices.Sort(arr)
-
-	return arr
+	return squares
 }
 
 func main() {
